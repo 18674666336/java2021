@@ -1,0 +1,49 @@
+spring:
+  servlet:
+    multipart:
+      #上传单个文件最大值
+      max-file-size: 10MB
+      #上传文件总的最大值
+      max-request-size: 10MB
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 985211
+  mail:
+    host: smtp.qq.com
+    username: lzy20150501@foxmail.com
+    password: jdhsfoavdrdwbcia
+    default-encoding: utf-8
+    protocol: smtp
+  redis:
+    host: 47.103.216.189
+    port: 6379
+    lettuce:
+      shutdown-timeout: 100
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: 60
+        min-idle: 0
+
+
+
+#打印日志的配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #扫描枚举包配置
+  type-enums-package:
+    com.glongmen.mybatisplus.enums
+  global-config:
+    #逻辑删除配置
+    db-config:
+      #表示没有删除
+      logic-not-delete-value: 0
+      #表示已经删除
+      logic-delete-value: 1
+#配置枚举包
+server:
+  port: 8081
