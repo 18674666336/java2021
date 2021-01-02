@@ -138,7 +138,7 @@ public class GoodsController {
         String originalFilename = file.getOriginalFilename();
         //对文件进行重命名
         String newFileName = System.currentTimeMillis() + originalFilename.substring(originalFilename.lastIndexOf("."));
-        System.out.println("新文件名称:"+newFileName);
+        System.out.println("新文件名称:" + newFileName);
         //获取服务器发布路径
         String realPath = ResourceUtils.getURL("classpath:").getPath() + "static/imgs/goods";
         System.out.println(realPath);
@@ -206,6 +206,18 @@ public class GoodsController {
         }
     }
 
+    /**
+     * @param goodsId: 商品ID
+     * @param time:    配送时间
+     * @param token:   买家令牌
+     * @param pointId: 代收点id
+     * @param price:   订单价格
+     * @param numb:    订单量
+     * @return com.glongmen.coursedesign.Vo.Result
+     * @description: TODO 购买商品的方法
+     * @author Ariel~~
+     * @date 8:07 2021/1/2
+     */
     @PostMapping("/pay/{goodsId}/{time}/{pointId}/{numb}/{price}/{token}")
     public Result pay(@PathVariable int goodsId, @PathVariable Date time, @PathVariable String token, @PathVariable int pointId, @PathVariable double price, @PathVariable int numb) {
         Token token1 = redisUtils.findToken(token);
@@ -229,6 +241,13 @@ public class GoodsController {
         }
     }
 
+    /**
+     * @param id: 订单id
+     * @return com.glongmen.coursedesign.Vo.Result
+     * @description: TODO 通过ID删除订单
+     * @author Ariel~~
+     * @date 8:10 2021/1/2
+     */
     @DeleteMapping("/deletedOrder/{id}")
     public Result deleteOrder(@PathVariable int id) {
         int i = goodsService.deleteOrderById(id);
@@ -240,7 +259,13 @@ public class GoodsController {
 
     }
 
-
+    /**
+     * @param id: 订单id
+     * @return com.glongmen.coursedesign.Vo.Result
+     * @description: TODO 配送订单
+     * @author Ariel~~
+     * @date 8:11 2021/1/2
+     */
     @PutMapping("/finishOrder/{id}")
     public Result finishOrder(@PathVariable int id) {
         int i = goodsService.finishOrderById(id);
@@ -251,6 +276,13 @@ public class GoodsController {
         }
     }
 
+    /**
+     * @param id: 统计的订单
+     * @return com.glongmen.coursedesign.Vo.Result
+     * @description: TODO 通过一个代收点id统计一个代收点订单
+     * @author Ariel~~
+     * @date 8:11 2021/1/2
+     */
     @GetMapping("/count/{id}")
     public Result count(@PathVariable int id) {
         if (id == 0)
