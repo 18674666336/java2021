@@ -130,7 +130,9 @@ public class GoodsServiceImpl implements GoodsService {
      */
     @Override
     public int updateGoods(Goods goods) {
-        int update = goodsMapper.updateById(goods);
+        Goods goodsX = goodsMapper.selectById(goods.getId());
+        goods.setVersion(goodsX.getVersion());
+        int update = goodsMapper.updateById(goodsX);
         return update;
     }
 
