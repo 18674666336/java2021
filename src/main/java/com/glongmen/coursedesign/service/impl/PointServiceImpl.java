@@ -39,6 +39,13 @@ public class PointServiceImpl implements PointService {
         return pointMapper.selectList(null);
     }
 
+    /**
+     * @description: TODO 注册代收点
+     * @author Ariel~~
+     * @param point: 代收点编号
+     * @return int
+     * @date 8:27 2021/1/2
+     */
     @Override
     public int insertPoint(Point point) {
         int insert = 0;

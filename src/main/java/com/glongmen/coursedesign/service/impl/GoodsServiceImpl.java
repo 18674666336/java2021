@@ -42,6 +42,13 @@ public class GoodsServiceImpl implements GoodsService {
         return goods;
     }
 
+    /**
+     * @description: TODO 通过id查询商品
+     * @author Ariel~~
+     * @param id: 商品id
+     * @return com.glongmen.coursedesign.entity.Goods
+     * @date 8:21 2021/1/2
+     */
     @Override
     public Goods findGoodsByID(int id) {
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -151,6 +158,13 @@ public class GoodsServiceImpl implements GoodsService {
         goodsMapper.update(goodsByID, queryWrapper);
     }
 
+    /**
+     * @description: TODO 通过id删除订单
+     * @author Ariel~~
+     * @param id: 订单id
+     * @return int
+     * @date 8:23 2021/1/2
+     */
     @Override
     public int deleteOrderById(int id) {
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -159,6 +173,13 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
 
+    /**
+     * @description: TODO 统计所有订单的情况,封装到视图类
+     * @author Ariel~~
+     * @param :
+     * @return com.glongmen.coursedesign.Vo.PointStateVo
+     * @date 8:23 2021/1/2
+     */
     @Override
     public PointStateVo countAllOrder() {
         PointStateVo pointStateVo = new PointStateVo();
@@ -194,6 +215,14 @@ public class GoodsServiceImpl implements GoodsService {
         return pointStateVo;
     }
 
+    /**
+     * @description: TODO 更新照片
+     * @author Ariel~~
+     * @param goodsId: 商品id
+     * @param url: 图片地址
+     * @return int
+     * @date 8:23 2021/1/2
+     */
     @Override
     public int updatePic(int goodsId, String url) {
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -204,6 +233,13 @@ public class GoodsServiceImpl implements GoodsService {
         return update;
     }
 
+    /**
+     * @description: TODO 通过id完成订单
+     * @author Ariel~~
+     * @param id: 订单id
+     * @return int
+     * @date 8:24 2021/1/2
+     */
     @Override
     public int finishOrderById(int id) {
         QueryWrapper queryWrapper =new QueryWrapper();
@@ -214,6 +250,13 @@ public class GoodsServiceImpl implements GoodsService {
         return update;
     }
 
+    /**
+     * @description: TODO 通过id统计订单
+     * @author Ariel~~
+     * @param pointID: 代收点id
+     * @return com.glongmen.coursedesign.Vo.PointStateVo
+     * @date 8:24 2021/1/2
+     */
     @Override
     public PointStateVo countOrderById(int pointID) {
         PointStateVo pointStateVo = new PointStateVo();

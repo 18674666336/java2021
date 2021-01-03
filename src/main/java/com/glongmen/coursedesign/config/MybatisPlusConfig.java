@@ -18,16 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @Configuration
 public class MybatisPlusConfig {
-
-    // 注册乐观锁插件(旧版：3.0.5)
-    /*
-    @Bean
-    public OptimisticLockerInterceptor optimisticLockerInterceptor(){
-        return new OptimisticLockerInterceptor();
-    }
-    */
-
-    // 注册乐观锁和分页插件(新版：3.4.0)
+    // 注册乐观锁和分页插件
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor(){
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
@@ -36,13 +27,5 @@ public class MybatisPlusConfig {
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL)); // 分页插件
         return interceptor;
     }
-
-    //注册分页插件(旧版：3.0.5)
-    /*
-    @Bean
-    public PaginationInterceptor paginationInterceptor(){
-        return new PaginationInterceptor();
-    }
-    */
 
 }

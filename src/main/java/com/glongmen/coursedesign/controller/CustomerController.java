@@ -43,7 +43,13 @@ public class CustomerController {
             return new Result(500, "登录失败");
         }
     }
-
+    /**
+     * @description: TODO 发送验证码
+     * @author Ariel~~
+     * @param email: 邮箱
+     * @return com.glongmen.coursedesign.Vo.Result
+     * @date 8:22 2021/1/2
+     */
     @GetMapping("/emailCode/{email}")
     public Result SignIn(@PathVariable String email) {
         int i = customerService.sendEmailCode(email);
@@ -56,6 +62,7 @@ public class CustomerController {
     }
 
     /**
+     * 注册账号并删除验证码
      * @param account:   账号
      * @param checkCode: 验证码
      * @param email:

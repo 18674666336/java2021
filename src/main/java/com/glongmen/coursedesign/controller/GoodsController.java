@@ -11,6 +11,7 @@ import com.glongmen.coursedesign.entity.Token;
 import com.glongmen.coursedesign.service.impl.GoodsServiceImpl;
 import com.glongmen.coursedesign.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -140,11 +141,12 @@ public class GoodsController {
         String newFileName = System.currentTimeMillis() + originalFilename.substring(originalFilename.lastIndexOf("."));
         System.out.println("新文件名称:" + newFileName);
         //获取服务器发布路径
+        //String realPath = ResourceUtils.getURL("classpath:").getPath() + "";
         String realPath = ResourceUtils.getURL("classpath:").getPath() + "static/imgs/goods";
-        System.out.println(realPath);
+        System.out.println("真实路径:"+realPath);
         //保存文件到:
         try {
-            file.transferTo(new File(realPath + "\\" + newFileName));
+            file.transferTo(new File(realPath + "/" + newFileName));
             int i = goodsService.updatePic(id, newFileName);
             if (i == 1) {
                 return new Result(200, "文件上传成功");

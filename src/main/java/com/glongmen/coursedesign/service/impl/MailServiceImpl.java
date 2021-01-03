@@ -58,6 +58,15 @@ public class MailServiceImpl implements MailService {
         }
     }
 
+    /**
+     * @description: TODO 发送验证码到email并存储到redis数据库
+     * @author Ariel~~
+     * @param receiver:
+     * @param subject:
+     * @param context:
+     * @return int
+     * @date 8:25 2021/1/2
+     */
     @Override
     public int sendHtmlMail(String receiver, String subject, String context) {
         MimeMessage message = mailSender.createMimeMessage();

@@ -31,6 +31,14 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     RedisUtils redisUtils;
 
+    /**
+     * @description: TODO客户账号登录
+     * @author Ariel~~
+     * @param account: 账号
+     * @param password: 密码
+     * @return com.glongmen.coursedesign.entity.Customer
+     * @date 8:19 2021/1/2
+     */
     @Override
     public Customer login(String account, String password) {
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -67,9 +75,15 @@ public class CustomerServiceImpl implements CustomerService {
         return 1;
     }
 
+    /**
+     * @description: TODO 注册客户账号
+     * @author Ariel~~
+     * @param customer:  客户类
+     * @return int
+     * @date 8:20 2021/1/2
+     */
     @Override
     public int signIn(Customer customer) {
-        QueryWrapper queryWrapper=new QueryWrapper();
         int update = 0;
         try {
             update = customerMapper.insert(customer);
@@ -79,6 +93,13 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
+    /**
+     * @description: TODO 通过账号查找客户
+     * @author Ariel~~
+     * @param account: 账号
+     * @return com.glongmen.coursedesign.entity.Customer
+     * @date 8:21 2021/1/2
+     */
     @Override
     public Customer findByAccount(String account) {
         QueryWrapper queryWrapper=new QueryWrapper();

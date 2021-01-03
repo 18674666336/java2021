@@ -34,4 +34,6 @@ public class Goods {
     private Date updateTime;
     @TableLogic
     private long deleted;
+    @Version
+    private int version;
 }
